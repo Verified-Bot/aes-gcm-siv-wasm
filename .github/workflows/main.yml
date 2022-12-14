@@ -19,7 +19,15 @@ jobs:
         version: 'latest'
 
     - name: Fetch token from Github Secrets and run Deploy Script
-      run: |
-        NPM_TOKEN=${{ secrets.NPM_TOKEN }}
-        ./deploy.sh
+      run: ./build.sh
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        registry-url: 'https://registry.npmjs.org'
+        - run: npm publish ./pkg
+          env:
+              NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
 
