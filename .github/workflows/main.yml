@@ -1,0 +1,19 @@
+name: NPM package build
+
+on:
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    
+    - uses: jetli/wasm-pack-action@v0.4.0
+      with:
+        version: 'latest'
+        
+    
