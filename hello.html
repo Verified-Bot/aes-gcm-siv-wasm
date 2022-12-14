@@ -1,0 +1,19 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<title>aes-gcm-siv-wasm</title>
+</head>
+<body>
+<script type="module">
+    import init, { encrypt, decrypt } from "./pkg/aes_gcm_wasm.js";
+    init().then(() => {
+        let encrypt_me = "Hello, WASM!";
+        console.log("Text to encrypt: " + encrypt_me)
+        let resp = encrypt(encrypt_me, "AAIDBAUDAwICAQIDBAQEAwMCAQMELQU4FxcXDQ8ZGRk=")
+        console.log("Encrypted text: " + resp)
+        let dec = decrypt(resp, "AAIDBAUDAwICAQIDBAQEAwMCAQMELQU4FxcXDQ8ZGRk=")
+        console.log("Decrypted text: " + dec)
+    });
+</script>
+</body>
+</html>
