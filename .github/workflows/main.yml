@@ -1,8 +1,10 @@
-name: NPM package build
+name: NPM Deploy Package
 
 on:
   workflow_dispatch:
-  
+  push:
+    branches:
+      - release
 
 jobs:
   build:
@@ -10,14 +12,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    
+
+
     - uses: jetli/wasm-pack-action@v0.4.0
       with:
         version: 'latest'
-        
+
     - name: Fetch token from Github Secrets and run Deploy Script
       run: |
         NPM_TOKEN=${{ secrets.NPM_TOKEN }}
         ./deploy.sh
-    
+
