@@ -8,6 +8,8 @@ head -n $LC ./pkg/package.json > ./pkg/package_n.json
 rm ./pkg/package.json
 mv ./pkg/package_n.json ./pkg/package.json
 
+cat ./pkg/package.json
+
 # add module type to pakcage.json
 echo '  "type": "module",' >> pkg/package.json
 echo "}" >> pkg/package.json
