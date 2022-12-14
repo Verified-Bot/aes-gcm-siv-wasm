@@ -1,6 +1,6 @@
 [package]
 name = "aes-gcm-siv-wasm"
-version = "0.1.2"
+version = "0.1.3"
 authors=[ "Ben Aubin <ben@benaubin.com>", "Arpan Dhatt <dhatt@utexas.edu>", "Nicholas Orlowsky <nickorlow@nickorlow.com>" ]
 description = "A WASM library to encrypt/decrypt text using AES-GCM-SIV"
 edition="2018"
