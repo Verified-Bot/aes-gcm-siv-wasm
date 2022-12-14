@@ -25,6 +25,7 @@ jobs:
       with:
         node-version: '18.x'
         registry-url: 'https://registry.npmjs.org'
+    
     - run: npm publish ./pkg
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
