@@ -6,6 +6,7 @@ description = "A WASM library to encrypt/decrypt text using AES-GCM-SIV"
 edition="2018"
 license = "Apache-2.0"
 license_file="LICENSE"
+type="module"
 
 [lib]
 crate-type = ["cdylib"]
