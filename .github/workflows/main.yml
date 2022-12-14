@@ -16,8 +16,8 @@ jobs:
       with:
         version: 'latest'
         
-    - name: Fetch token from Github Secrets
-      run: $NPM_TOKEN=${{ secrets.NPM_TOKEN }}
-      
-    - name: Run build script
-      run: ./deploy.sh
+    - name: Fetch token from Github Secrets and run Deploy Script
+      run: |
+        NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+        ./deploy.sh
+    
