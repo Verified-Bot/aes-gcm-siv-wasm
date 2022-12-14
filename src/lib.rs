@@ -3,17 +3,16 @@ use aes_gcm_siv::{aead::{Aead, NewAead}, Aes256GcmSiv, Nonce};
 use std::str;
 
 #[wasm_bindgen]
-pub fn encrypt(string: &str, key: &str) -> String {
+pub fn encrypt(string: &str, key: &str) -> Vec<u8> {
     let key_bytes: &[u8] = &(base64::decode(key.as_bytes()).unwrap());
     let str_bytes = string.as_bytes();
-    return base64::encode(aes_encrypt(str_bytes, &key_bytes));
+    return aes_encrypt(str_bytes, &key_bytes);
 }
 
 #[wasm_bindgen]
-pub fn decrypt(string: &str, key: &str) -> String {
-    let str_bytes: &[u8] = &(base64::decode(string).unwrap());
+pub fn decrypt(bytes: &[u8], key: &str) -> String {
     let key_bytes: &[u8] = &(base64::decode(key.as_bytes()).unwrap());
-    return str::from_utf8(&aes_decrypt(&*str_bytes, &key_bytes).unwrap()).unwrap().to_string();
+    return str::from_utf8(&aes_decrypt(&*bytes, &key_bytes).unwrap()).unwrap().to_string();
 }
 
 pub fn aes_encrypt(msg: &[u8], key: &[u8]) -> Vec<u8> {
